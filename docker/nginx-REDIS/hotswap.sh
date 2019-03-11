@@ -4,6 +4,7 @@ set -e
 if grep -q "$1:6379" "/etc/nginx/nginx.conf"; then
   echo IP already in use
 else
+  echo switchin to new IP: $1
   sed -i'' "s/server .*:6379/server $1:6379/" /etc/nginx/nginx.conf
 fi
 
